@@ -59,3 +59,5 @@ class Queue:
             return self.storage.remove_head()
 
 #33333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+# An array is more simple for enqueuing & deqeueing items because you have to change the pointers of the nodes involved
+# with the head & tail using a LL.
