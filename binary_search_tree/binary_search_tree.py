@@ -1,4 +1,6 @@
 from stack import Stack
+from queue import Queue
+from singly_linked_list import LinkedList
 """
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
@@ -10,7 +12,6 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
-
 
 class BSTNode:
     def __init__(self, value):
@@ -69,35 +70,68 @@ class BSTNode:
     # Hint:  Use a recursive, depth first traversal
 
     def in_order_print(self, node):
-        # lowest number is always furthest to the left
-        # base case?
-        if node is None:
+        if self is None:
             return
 
-        # recursive case?
-        self.in_order_print(self.left)
+        if self.left is not None:
+            self.left.in_order_print(node)
 
-        # build up your call stack to see what happens?
+        print(self.value)
 
+        if self.right is not None:
+            self.right.in_order_print(node)
+
+    
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
 
     def bft_print(self, node):
-        # use a queue
-        # start queue with root node
-        # while loop that checks size of queue
-        # pointer variable that updates at the beginning of each loop
-        pass
+    # start by placing the root in the queue​
+    # need a while loop to iterate
+    # what are we checking in the while statement?
+    # while length of queue is greater than 0
+        # dequeue item from front of queue
+        # print that item​
+    # place current item's left node in queue if not None
+    # place current item's right node in queue if not None
+
+        q = Queue()
+        q.enqueue(node)
+    
+        while len(q) > 0:
+            node = q.dequeue()
+            print(node.value)
+            if node.left is not None:
+                q.enqueue(node.left)
+            if node.right is not None:
+                q.enqueue(node.right)
+        
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
 
     def dft_print(self, node):
-        # use a stack
-        # start your stack with the root node
-        # while loop that checks stack size
-        # pointer
-        pass
+        # initialize an empty stack
+        # push the root node onto the stack​
+        # need a while loop to manager our iteration
+        # if stack is not empty enter the while loop
+            # pop top item off the stack
+            # print that item's value​
+            # if there is a right subtree
+                # push right item onto the stack                
+            # if there is a left subtree
+                # push left item onto the stack
+        
+        s = Stack()
+        s.push(node)
+        
+        while len(s) > 0:
+            node = s.pop()
+            print(node.value)
+            if node.left is not None:
+                s.push(node.left)
+            if node.right is not None:
+                s.push(node.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
