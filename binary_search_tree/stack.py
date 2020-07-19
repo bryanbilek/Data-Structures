@@ -13,7 +13,7 @@ return elements in Last In First Out order.
    implementing a Stack?
 """
 
-#1111111111111111111111111111111111111111111111111111111111111111111111111111111
+# 1111111111111111111111111111111111111111111111111111111111111111111111111111111
 
 # class Stack:
 #     def __init__(self):
@@ -34,20 +34,21 @@ return elements in Last In First Out order.
 #             self.size -= 1
 #             return self.storage.pop()
 
-#2222222222222222222222222222222222222222222222222222222222222222222222222
+# 2222222222222222222222222222222222222222222222222222222222222222222222222
+
 
 class Stack:
     def __init__(self):
         self.size = 0
         self.storage = LinkedList()
-    
+
     def __len__(self):
         return self.size
-    
+
     def push(self, value):
         self.size += 1
         self.storage.add_to_tail(value)
-    
+
     def pop(self):
         if self.size == 0:
             return None
@@ -55,6 +56,6 @@ class Stack:
             self.size -= 1
             return self.storage.remove_tail()
 
-#33333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-# An array is more simple for pushing & popping items to the stack because you have to change the pointers of the nodes 
+# 33333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+# An array is more simple for pushing & popping items to the stack because you have to change the pointers of the nodes
 # involved with the tail when using a LL.
